@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./node_modules/vue/dist/vue.min.js"></script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+  <div id="app">
+        <input type="text" v-model="number"  >
+        <button-box @btn="handle"></button-box>
+        <button @click="render">按钮</button>
+    </div>
+
+    <script>
+          let vm =  new Vue({
+                el: "#app",
+                data: {
+                   number: 1,
+                   Newnumber: [34,546,68],
+                },
+                methods: {
+                    render() {
+                      
+                    },
+                    handle(e) {
+                        this.number = e;
+                    }
+                },
+                components: {
+                    'button-box': {
+                        data: function() {
+                            return {
+                                msg: '我是袁建'
+                            }
+                        },
+                        template: `<div @click="$emit('btn',msg)">袁建</div>`
+                    }
+                }
+               
+            })
+     </script> 
+
+    <script>
+     
+
+    </script>
+
+</body>
+
+</html>

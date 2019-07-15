@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        @media screen and (max-width: 750px) and (min-width: 500px) {
+            div {
+                width: 80%;
+                height: 8rem;
+                font-size: .4rem;
+                background-color: red;
+                background: url(./src/assets/logo.png) no-repeat;
+                background-size: auto;
+            }
+        }
+
+        @media screen and (max-width: 400px) {
+            div {
+                width: 40%;
+                height: 4rem;
+                font-size: .6rem;
+                background-color: orange;
+            }
+        }
+
+        html {
+            overflow-x: hidden;
+            height: 2000px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+    </div>
+    <script>
+        let arr = [34,23,66,34,88,99,34];
+        //返回34的所有索引
+        let index = arr.indexOf(34);
+       while(index != -1) {
+          console.log(index);
+          index =  arr.indexOf(34,index+1); 
+       }
+    </script>
+</body>
+
+</html>

@@ -1,23 +1,26 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
-
+// login组件是在这里加载的
+import login from './components/login.vue'
+import home from './components/home.vue'
+import Users from './components/users/users.vue'
 Vue.use(Router)
 
-export default new Router({
+let router = new Router({
   routes: [
-    {
-      path: '/',
-      name: 'home',
-      component: Home
-    },
-    {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
-    }
+    //新增一个login组件的路由规则
+    {path: '/login',component: login},
+    {path:'/',redirect: '/login'},
+    {path:'/home',component: home,children: [
+      { path: '/users', component: Users }
+    ]},
   ]
 })
+
+router.beforeEach((to,from,next) => {
+  if(to.path=='/login')  return next();
+  let tokenStr = sessionStorage.getItem("token");
+  if(!tokenStr) return next('/login');
+  next();
+})
+export default router;
